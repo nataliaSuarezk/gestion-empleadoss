@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html ng-app="gestionEmpleadosApp">
+
+<head>
+    <title>gestion de empleados</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+    <nav class="teal">
+        <div class="nav-wrapper container">
+            <a href="#" class="brand-logo">Gestion de Empleados</a>
+        </div>
+    </nav>
+    <div class="container" ng-controller="empleadoController">
+        <h3>lista de empleados</h3>
+        <div class="row">
+            <div class="col s12">
+                <form ng-submit="guardarEmpleado()">
+                    <div class="input-field col s6">
+                        <input id="nombre" type="text" ng-model="empleado.nombre">
+                        <label for="nombre">Nombre</label>
+
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="email" type="email" ng-model="empleado.email">
+                        <label for="email">email</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="cargo" type="text" ng-model="empleado.cargo">
+                        <label for="cargo">cargo</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="salario" type="number" ng-model="empleado.salario">
+                        <label for="salario">salario</label>
+                    </div>
+                    <button typt="submit" class="btn teal">guardar</button>
+                    <button typr="button" class="btn grey" ng-click="limpiarFormulario()">limpiar</button>
+
+                </form>
+            </div>
+        </div>
+        <table class="highlight">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>email</th>
+                    <th>cargo</th>
+                    <th>salario</th>
+                    <th>acciones</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="emp in empleados">
+                    <td>{{emp.nombre}}</td>
+                    <td>{{emp.email}}</td>
+                    <td>{{emp.cargo}}</td>
+                    <td>{{emp.salario}}</td>
+                    <td>
+                        <button class="btn-small teal" ng-click="editarEmpleado(emp)">Editar</button>
+                        <button class="btn-small red" ng-click="eliminarEmpleado(emp._id)">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>
